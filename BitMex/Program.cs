@@ -5,11 +5,10 @@ using System.Linq;
 
 namespace BitMex
 {
-    class Program
+    public class Program
     {
-
-        private static string bitmexKey = "<APIKEY>";
-        private static string bitmexSecret = "<APISECRET>";
+        private static string bitmexKey = Environment.GetEnvironmentVariable("bitmex-apiKey");
+        private static string bitmexSecret = Environment.GetEnvironmentVariable("bitmex-apiSecret");
 
         static void Main(string[] args)
         {
