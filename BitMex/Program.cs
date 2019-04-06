@@ -8,8 +8,8 @@ namespace BitMex
     class Program
     {
 
-        private static string bitmexKey = "cMmdhQrPgkX4-ByfGSJPFZbs";
-        private static string bitmexSecret = "UBByyE7pjnGbcYo93ZH9ZCvLk0IXjiJSnFKCkvkgrFJXQR9n";
+        private static string bitmexKey = "<APIKEY>";
+        private static string bitmexSecret = "<APISECRET>";
 
         static void Main(string[] args)
         {
