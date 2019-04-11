@@ -19,24 +19,25 @@ namespace BitMex
         private void Run(string[] args)
         {
             BitMEXApi bitmex = new BitMEXApi(bitmexKey, bitmexSecret);
+            var result = bitmex.GetExecutionTradeHistory();
 
-            var trades = bitmex.GetUserWalletHistory(false);
+            //var walletHistory = bitmex.GetUserWalletHistory(false);
 
-            WalletHistoryItem lastTrade = null;
-            for (int i = 0; i < trades.Count; i++)
-            {
-                if (lastTrade == null
-                    || trades[i].transactType != "RealisedPNL")
-                {
-                    lastTrade = trades[i];
-                    continue;
-                }
+            //WalletHistoryItem lastTrade = null;
+            //for (int i = 0; i < walletHistory.Count; i++)
+            //{
+            //    if (lastTrade == null
+            //        || walletHistory[i].transactType != "RealisedPNL")
+            //    {
+            //        lastTrade = walletHistory[i];
+            //        continue;
+            //    }
 
-                trades[i].PercentGain = (trades[i].Amount * 100) / lastTrade.WalletBalance;
-                lastTrade = trades[i];
-            }
+            //    walletHistory[i].PercentGain = (walletHistory[i].Amount * 100) / lastTrade.WalletBalance;
+            //    lastTrade = walletHistory[i];
+            //}
 
-            Show(trades);
+            //Show(walletHistory);
             Console.Read();
         }
 

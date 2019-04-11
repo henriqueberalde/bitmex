@@ -166,7 +166,7 @@ namespace BitMEX
             param["symbol"] = "XBTUSD";
             //param["filter"] = "{\"open\":true}";
             //param["columns"] = "";
-            //param["count"] = 100.ToString();
+            param["count"] = 100.ToString();
             //param["start"] = 0.ToString();
             //param["reverse"] = true.ToString();
             //param["startTime"] = "";
@@ -174,7 +174,7 @@ namespace BitMEX
             return Query("GET", "/order", param, true, false);
         }
 
-        public string GetExecutionTradeHistory()
+        public List<dynamic> GetExecution()
         {
             var param = new Dictionary<string, string>();
             param["symbol"] = "XBTUSD";
@@ -182,10 +182,24 @@ namespace BitMEX
             //param["columns"] = "";
             param["count"] = 100.ToString();
             //param["start"] = 0.ToString();
-            param["reverse"] = true.ToString();
+            //param["reverse"] = true.ToString();
             //param["startTime"] = "";
             //param["endTime"] = "";
-            return Query("GET", "/execution/tradeHistory", param, true, false);
+            return Query<List<dynamic>>("GET", "/execution", param, true, false);
+        }
+
+        public List<TradeHistoryItem> GetExecutionTradeHistory()
+        {
+            var param = new Dictionary<string, string>();
+            param["symbol"] = "XBTUSD";
+            //param["filter"] = "{\"open\":true}";
+            //param["columns"] = "";
+            //param["count"] = 100.ToString();
+            //param["start"] = 0.ToString();
+            //param["reverse"] = true.ToString();
+            //param["startTime"] = "";
+            //param["endTime"] = "";
+            return Query<List<TradeHistoryItem>>("GET", "/execution/tradeHistory", param, true, false);
         }
 
         public List<WalletHistoryItem> GetUserWalletHistory(bool reversed)
